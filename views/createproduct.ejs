@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Apply to all anchor tags */
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Navbar -->
+  <nav class="border-b border-gray-300">
+    <div class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+      <h1 class="text-xl font-semibold">Admin Panel.</h1>
+      <ul class="flex space-x-6">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Cart</a></li>
+        <li><a href="#">My account</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto mt-10 px-6">
+    <div class="grid grid-cols-4 gap-6">
+      <!-- Sidebar -->
+      <div class="col-span-1 text-gray-600 space-y-2">
+        <a href="#" class="block">All Products</a>
+        <a href="#" class="block font-semibold text-black">Create New Product</a>
+      </div>
+
+      <!-- Form Section -->
+      <div class="col-span-3">
+        <h2 class="text-lg font-semibold mb-6">Create New Product</h2>
+
+        <!-- Form -->
+        <form action="/owner/createproduct" method="post" enctype="multipart/form-data"  class="space-y-8">
+          <!-- Product Details -->
+          <div>
+            <h3 class="text-md font-semibold mb-4">Product Details</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium mb-2">Product Image</label>
+                <input type="file" name="product_image"
+                       class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 
+                       file:rounded file:border-0 file:text-sm file:font-semibold
+                       file:bg-blue-600 file:text-white hover:file:bg-blue-700"/>
+              </div>
+              <input type="text" name="product_name" placeholder="Product Name" class="w-full border rounded px-4 py-2 bg-gray-100" />
+              <div class="flex space-x-4">
+                <input type="text" name="product_price" placeholder="Product Price" class="w-1/2 border rounded px-4 py-2 bg-gray-100" />
+                <input type="text" name="discount_price" placeholder="Discount Price" class="w-1/2 border rounded px-4 py-2 bg-gray-100" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel Details -->
+          <div>
+            <h3 class="text-md font-semibold mb-4">Panel Details</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <input type="text" name="background_color" placeholder="Background Color" class="w-full border rounded px-4 py-2 bg-gray-100" />
+              <input type="text" name="panel_color" placeholder="Panel Color" class="w-full border rounded px-4 py-2 bg-gray-100" />
+              <input type="text" name="text_color" placeholder="Text Color" class="w-full border rounded px-4 py-2 bg-gray-100 col-span-2" />
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div>
+            <button type="submit" class="px-6 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700">
+              Save Product
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

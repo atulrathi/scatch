@@ -1,8 +1,13 @@
-const express=require('express');
-const router=express.Router();
+//reqires dependencies
+const express = require("express");
+const router = express.Router();
+const { islogin, logout } = require("../middlewair/islogin");
 
-router.get('/',(req,res)=>{
-  res.send('user');
+router.get("/", islogin, (req, res) => {
+  res.render("user");
 });
 
-module.exports=router;
+router.get("/logout",logout)
+
+
+module.exports = router;

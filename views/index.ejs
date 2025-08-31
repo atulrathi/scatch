@@ -1,138 +1,134 @@
 <!DOCTYPE html>
 
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Login & Sign Up | Welcome! ✨</title>
 
-    <link rel="stylesheet" href="/stylesheet/index.css">
+    <link rel="stylesheet" href="/stylesheet/index.css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Optional: For social icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Optional: For social icons -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-</head>
+  </head>
 
-<body>
-
+  <body>
+    <div class="h-10 w-100 flex justify-center  ">
+           <% if(error.length>0){ %>
+        <span class="text-red-500  "><%=error%></span>
+      <%}%></div>
+       <div class="h-10 w-100 flex justify-center  ">
+           <% if(wentwrong.length>0){ %>
+        <span class="text-red-500  "><%=wentwrong%></span>
+      <%}%></div>
     <div class="container" id="container">
+      <!-- Sign Up Form -->
 
-        <!-- Sign Up Form -->
+      <div class="form-container sign-up-container">
+        <form action="/register" method="post">
+          <h1>Create Account 🚀</h1>
 
-        <div class="form-container sign-up-container">
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
 
-            <form action="#">
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 
-                <h1>Create Account 🚀</h1>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
 
-                <div class="social-container">
+          <span>or use your email for registration</span>
 
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+          <input type="text" name="fullname" placeholder="👤 Name" required />
 
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+          <input type="email" name="email" placeholder="📧 Email" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="🔒 Password"
+            required
+          />
 
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
 
-                </div>
+      <!-- Sign In Form -->
 
-                <span>or use your email for registration</span>
+      <div class="form-container sign-in-container">
+        <form action="/login" method="post">
+          <h1>Sign In 👋</h1>
 
-                <input type="text" placeholder="👤 Name" required />
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
 
-                <input type="email" placeholder="📧 Email" required/>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 
-                <input type="password" placeholder="🔒 Password" required/>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
 
-                <button type="submit">Sign Up</button>
+          <span>or use your account</span>
 
-            </form>
+          <input type="email" name="email" placeholder="📧 Email" required />
 
+          <input type="password" name="password" placeholder="🔒 Password" required />
+          <div class="h-10 w-100 flex justify-center  ">
+           <% if(notuser.length>0){ %>
+        <span class="text-red-500  "><%=notuser%></span>
+      <%}%></div>
+
+          <a href="#">Forgot your password? 🤔</a>
+
+          <button type="submit">Sign In</button>
+        </form>
+      </div>
+
+      <!-- Overlay Container -->
+
+      <div class="overlay-container">
+        <div class="overlay">
+          <!-- Overlay Left Panel (Shown when Sign In is active) -->
+
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back! 🎉</h1>
+
+            <p>
+              To keep connected with us please login with your personal info
+            </p>
+
+            <button class="ghost" id="signIn">Sign In</button>
+          </div>
+
+          <!-- Overlay Right Panel (Shown when Sign Up is active) -->
+
+          <div class="overlay-panel overlay-right">
+            <h1>Hello, Friend! ✨</h1>
+
+            <p>Enter your personal details and start your journey with us</p>
+
+            <button class="ghost" id="signUp">Sign Up</button>
+          </div>
         </div>
-
-        <!-- Sign In Form -->
-
-        <div class="form-container sign-in-container">
-
-            <form action="#">
-
-                <h1>Sign In 👋</h1>
-
-                <div class="social-container">
-
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-
-                </div>
-
-                <span>or use your account</span>
-
-                <input type="email" placeholder="📧 Email" required/>
-
-                <input type="password" placeholder="🔒 Password" required/>
-
-                <a href="#">Forgot your password? 🤔</a>
-
-                <button type="submit">Sign In</button>
-
-            </form>
-
-        </div>
-
-        <!-- Overlay Container -->
-
-        <div class="overlay-container">
-
-            <div class="overlay">
-
-                <!-- Overlay Left Panel (Shown when Sign In is active) -->
-
-                <div class="overlay-panel overlay-left">
-
-                    <h1>Welcome Back! 🎉</h1>
-
-                    <p>To keep connected with us please login with your personal info</p>
-
-                    <button class="ghost" id="signIn">Sign In</button>
-
-                </div>
-
-                <!-- Overlay Right Panel (Shown when Sign Up is active) -->
-
-                <div class="overlay-panel overlay-right">
-
-                    <h1>Hello, Friend! ✨</h1>
-
-                    <p>Enter your personal details and start your journey with us</p>
-
-                    <button class="ghost" id="signUp">Sign Up</button>
-
-                </div>
-
-            </div>
-
-        </div>
-
+      </div>
     </div>
 
-    <div class="copyright">
-
-        @copyright by dipesh
-
-    </div>
+    <div class="copyright">@copyright by dipesh</div>
 
     <script src="./javascript/index.js"></script>
-</body>
-
+  </body>
 </html>
