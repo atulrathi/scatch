@@ -1,112 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="font-sans bg-white text-gray-800">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="font-sans bg-white text-gray-800">
+    <!-- Header -->
+    <header
+      class="flex justify-between items-center px-10 py-4 border-b border-gray-300"
+    >
+      <h2 class="text-2xl font-bold">Scatch.</h2>
+      <nav class="space-x-6">
+        <a href="#" class="no-underline">Home</a>
+        <a href="#" class="no-underline">Products</a>
+        <a href="#" class="no-underline">Cart</a>
+        <a href="#" class="no-underline">My account</a>
+      </nav>
+    </header>
 
-  <!-- Header -->
-  <header class="flex justify-between items-center px-10 py-4 border-b border-gray-300">
-    <h2 class="text-2xl font-bold">Shop.</h2>
-    <nav class="space-x-6">
-      <a href="#" class="no-underline">Home</a>
-      <a href="#" class="no-underline">Products</a>
-      <a href="#" class="no-underline">Cart</a>
-      <a href="#" class="no-underline">My account</a>
-    </nav>
-  </header>
+    <div class="  flex px-10 py-6">
+      <!-- Sidebar -->
+      <aside class="w-48 pr-6 border-r border-zinc">
+        <h4 class="text-sm font-semibold mb-2">Sort by:</h4>
+        <select
+          class="w-full mb-6 border border-gray-300 rounded-md px-2 py-1 text-sm"
+        >
+          <option>Popular</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+        </select>
 
-  <div class="flex px-10 py-6">
-    <!-- Sidebar -->
-    <aside class="w-48 pr-6">
-      <h4 class="text-sm font-semibold mb-2">Sort by:</h4>
-      <select class="w-full mb-6 border border-gray-300 rounded-md px-2 py-1 text-sm">
-        <option>Popular</option>
-        <option>Price: Low to High</option>
-        <option>Price: High to Low</option>
-      </select>
-
-      <h4 class="text-sm font-semibold mb-2">Collections</h4>
-      <div class="flex flex-col space-y-2 mb-60 text-sm">
-        <a href="#" class="no-underline">New Collection</a>
-        <a href="#" class="no-underline font-bold">All Products</a>
-        <a href="#" class="no-underline">Discounted Products</a>
-      </div>
-
-      <h4 class="text-sm font-semibold mb-2 text-black">Filter by:</h4>
-      <div class="flex flex-col space-y-2 text-sm">
-        <a href="#" class="no-underline">Availability</a>
-        <a href="#" class="no-underline">Discount</a>
-      </div>
-    </aside>
-
-    <!-- Products area -->
-    <main class="flex-1">
-
-      <!-- Product grid -->
-      <div class="grid grid-cols-4 gap-6">
-        <!-- Product card -->
-        <div class="relative rounded-xl p-4 bg-[#fbe3da]">
-          <div class="w-full h-60 bg-white rounded-lg mb-4"></div>
-          <div class="font-bold text-sm">Clinge Bag</div>
-          <div class="text-xs text-gray-700">₹ 1200</div>
-          <button class="absolute bottom-3 right-3 border border-gray-400 bg-white rounded-full px-2 text-sm">+</button>
+        <h4 class="text-sm font-semibold mb-2">Collections</h4>
+        <div class="flex flex-col space-y-2 mb-60 text-sm">
+          <a href="#" class="no-underline">New Collection</a>
+          <a href="#" class="no-underline font-bold">All Products</a>
+          <a href="#" class="no-underline">Discounted Products</a>
         </div>
 
-        <div class="relative rounded-xl p-4 bg-[#dce8f9]">
-          <div class="w-full h-60 bg-white rounded-lg mb-4"></div>
-          <div class="font-bold text-sm">Backpack</div>
-          <div class="text-xs text-gray-700">₹ 1100</div>
-          <button class="absolute bottom-3 right-3 border border-gray-400 bg-white rounded-full px-2 text-sm">+</button>
+        <h4 class="text-sm font-semibold mb-2 text-black">Filter by:</h4>
+        <div class="flex flex-col space-y-2 text-sm">
+          <a href="#" class="no-underline">Availability</a>
+          <a href="#" class="no-underline">Discount</a>
         </div>
+      </aside>
 
-        <div class="relative rounded-xl p-4 bg-[#efe6d5]">
-          <div class="w-full h-60 bg-white rounded-lg mb-4"></div>
-          <div class="font-bold text-sm">Multipurpose</div>
-          <div class="text-xs text-gray-700">₹ 100</div>
-          <button class="absolute bottom-3 right-3 border border-gray-400 bg-white rounded-full px-2 text-sm">+</button>
+      <!-- Products area -->
+      <main class="ml-[4rem] flex">
+        <!-- Product grid -->
+        <div class="grid grid-cols-5 gap-3">
+          <!-- Product card -->
+          <% product.forEach((product)=>{ %>
+          <div class="relative  p-4 w-[17rem] bg-[<%= product.backgroundcolor%>]">
+            <div class="  w-full h-60 bg-white rounded-lg mb-4 ">
+              <img
+                src="data:<%=product.image.contentType%>;base64,<%= product.image.data.toString('base64')%>"
+                class="rounded-md w-full h-full object-cover"
+                alt=""
+              />
+            </div>
+            <div class="font-bold text-sm"><%= product.name %></div>
+            <div class="text-xs text-[<%=product.textcolor%>]"><p>&#8377 <%= product.price %></p></div>
+            <button
+              class="absolute bottom-3 right-3 border border-[<%=product.pannelcolor%>] bg-white rounded-full px-2 text-sm"
+            >
+              +
+            </button>
+          </div>
+          <% }) %>
         </div>
-
-        <div class="relative rounded-xl p-4 bg-[#f4dde5]">
-          <span class="absolute top-2 right-2 bg-red-500 text-white text-[10px] px-2 py-1 rounded-full">-25%</span>
-          <div class="w-full h-60 bg-white rounded-lg mb-4"></div>
-          <div class="font-bold text-sm">Pink Attack</div>
-          <div class="text-xs text-gray-700">₹ 1400</div>
-          <button class="absolute bottom-3 right-3 border border-gray-400 bg-white rounded-full px-2 text-sm">+</button>
-        </div>
-
-        <div class="relative rounded-xl p-4 bg-[#e0e0e0]">
-          <div class="w-full h-60 bg-white rounded-lg mb-4"></div>
-          <div class="font-bold text-sm">The Stud</div>
-          <div class="text-xs text-gray-700">₹ 1100</div>
-          <button class="absolute bottom-3 right-3 border border-gray-400 bg-white rounded-full px-2 text-sm">+</button>
-        </div>
-
-        <div class="relative rounded-xl p-4 bg-[#f5f0db]">
-          <div class="w-full h-60 bg-white rounded-lg mb-4"></div>
-          <div class="font-bold text-sm">Surprise</div>
-          <div class="text-xs text-gray-700">₹ 100</div>
-          <button class="absolute bottom-3 right-3 border border-gray-400 bg-white rounded-full px-2 text-sm">+</button>
-        </div>
-
-        <div class="relative rounded-xl p-4 bg-[#f1f1f1]">
-          <div class="w-full h-60 bg-white rounded-lg mb-4"></div>
-          <div class="font-bold text-sm">Supreme</div>
-          <div class="text-xs text-gray-700">₹ 1800</div>
-          <button class="absolute bottom-3 right-3 border border-gray-400 bg-white rounded-full px-2 text-sm">+</button>
-        </div>
-
-        <div class="relative rounded-xl p-4 bg-[#ddd]">
-          <div class="w-full h-60 bg-white rounded-lg mb-4"></div>
-          <div class="font-bold text-sm">The Dark</div>
-          <div class="text-xs text-gray-700">₹ 100</div>
-          <button class="absolute bottom-3 right-3 border border-gray-400 bg-white rounded-full px-2 text-sm">+</button>
-        </div>
-      </div>
-    </main>
-  </div>
-</body>
+      </main>
+    </div>
+  </body>
 </html>
