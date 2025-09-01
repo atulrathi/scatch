@@ -5,17 +5,17 @@ const usermodel = require("../models/usermodel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { generatetoken } = require("../utils/generatetoken");
-const {registeruser,loginUser}=require("../controler/Authcontrol");
+const { registeruser, loginUser } = require("../controler/Authcontrol");
 
 //render login and signup page
 router.get("/", (req, res) => {
   let error = req.flash("error");
-  let notuser=req.flash("notuser");
-  let wentwrong=req.flash("wenterong")
-  if(req.cookies.token){
-    return res.redirect("/user")
-  }else{
-    res.render("index",{error,notuser,wentwrong});
+  let notuser = req.flash("notuser");
+  let wentwrong = req.flash("wenterong");
+  if (req.cookies.token) {
+    return res.redirect("/user");
+  } else {
+    res.render("index", { error, notuser, wentwrong });
   }
 });
 

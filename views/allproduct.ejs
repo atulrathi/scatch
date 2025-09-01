@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Apply to all anchor tags */
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800">
+  <!-- Navbar -->
+  <nav class="border-b border-gray-300">
+    <div class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+      <h1 class="text-xl font-semibold">Admin Panel.</h1>
+      <ul class="flex space-x-6">
+        <li><a href="#">My account</a></li>
+        <a class="text-red-500" href="/user/logout">Logout</a>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto mt-10 px-6">
+    <div class="grid grid-cols-4 gap-6">
+      <!-- Sidebar -->
+      <div class="col-span-1 text-gray-600 space-y-2">
+        <a href="#" class="block font-semibold text-black">All Products</a>
+        <a href="/owner" class="block ">Create New Product</a>
+      </div>
+
+      <!-- Form Section -->
+      <div class="col-span-3">
+        <h2 class="text-lg font-semibold mb-6">All products</h2>
+
+        <div class="grid grid-cols-3 gap-3">
+          <% data.product.forEach((product)=>{ %>
+          <div class="relative  p-4 h-80 overflow-hidden w-[17rem] bg-[<%= product.backgroundcolor%>]">
+            <div class="  w-full h-60 bg-white rounded-lg mb-4 ">
+              <img
+                src="data:<%=product.image.contentType%>;base64,<%= product.image.data.toString('base64')%>"
+                class="rounded-md w-full h-full object-cover"
+                alt=""
+              />
+            </div>
+            <div class="font-bold text-sm"><%= product.name %></div>
+            <div class="text-xs text-[<%=product.textcolor%>]"><p>&#8377 <%= product.price %></p></div>
+           <a  class="absolute bottom-1 right-0 text-red-500  px-2 text-sm" href="/allproduct/delete/<%=product._id%>">deleate product</a>
+          </div>
+          <% }) %>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>

@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Login & Sign Up | Welcome! ✨</title>
+    <title>Scatc</title>
 
     <link rel="stylesheet" href="/stylesheet/index.css" />
 
@@ -24,19 +24,17 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
   <body>
-    <div class="h-10 w-100 flex justify-center  ">
-           <% if(error.length>0){ %>
-        <span class="text-red-500  "><%=error%></span>
-      <%}%></div>
-       <div class="h-10 w-100 flex justify-center  ">
-           <% if(wentwrong.length>0){ %>
-        <span class="text-red-500  "><%=wentwrong%></span>
-      <%}%></div>
+    <h1 class="text-black">Scatch.In</h1>
+
+    <div class="h-10 w-100 flex justify-center">
+      <% if(wentwrong.length>0){ %>
+      <span class="text-red-500"><%=wentwrong%></span>
+      <%}%>
+    </div>
     <div class="container" id="container">
       <!-- Sign Up Form -->
 
@@ -71,6 +69,11 @@
       <!-- Sign In Form -->
 
       <div class="form-container sign-in-container">
+        <% if(error.length>0){ %>
+        <div class="h-5 w-full flex justify-center">
+          <span class="text-red-500"><%=error%></span>
+        </div>
+        <%}%>
         <form action="/login" method="post">
           <h1>Sign In 👋</h1>
 
@@ -86,15 +89,24 @@
 
           <input type="email" name="email" placeholder="📧 Email" required />
 
-          <input type="password" name="password" placeholder="🔒 Password" required />
-          <div class="h-10 w-100 flex justify-center  ">
-           <% if(notuser.length>0){ %>
-        <span class="text-red-500  "><%=notuser%></span>
-      <%}%></div>
+          <input
+            type="password"
+            name="password"
+            placeholder="🔒 Password"
+            required
+          />
+
+          <% if(notuser.length>0){ %>
+          <div class="h-10 w-100 flex justify-center">
+            <span class="text-red-500"><%=notuser%></span>
+          </div>
+          <%}%>
 
           <a href="#">Forgot your password? 🤔</a>
 
           <button type="submit">Sign In</button>
+
+          <a class="text-black" href="/adminLogin">Login to create Product</a>
         </form>
       </div>
 
@@ -126,8 +138,6 @@
         </div>
       </div>
     </div>
-
-    <div class="copyright">@copyright by dipesh</div>
 
     <script src="./javascript/index.js"></script>
   </body>

@@ -25,10 +25,8 @@
       >
         <h1 class="text-xl font-semibold">Admin Panel.</h1>
         <ul class="flex space-x-6">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Cart</a></li>
           <li><a href="#">My account</a></li>
+          <a class="text-red-500" href="/user/logout">Logout</a>
         </ul>
       </div>
     </nav>
@@ -38,7 +36,7 @@
       <div class="grid grid-cols-4 gap-6">
         <!-- Sidebar -->
         <div class="col-span-1 text-gray-600 space-y-2">
-          <a href="#" class="block">All Products</a>
+          <a href="/allproduct" class="block">All Products</a>
           <a href="#" class="block font-semibold text-black"
             >Create New Product</a
           >
@@ -101,28 +99,28 @@
             <!-- Panel Details -->
             <div>
               <h3 class="text-md font-semibold mb-4">Panel Details</h3>
-              <div class="grid grid-cols-2 gap-4">
+              <div class="grid grid-cols-3 gap-4">
                 <input
                   required
                   type="text"
                   name="backgroundcolor"
                   placeholder="Background Color"
-                  class="w-full border rounded px-4 py-2 bg-gray-100"
-                />
-                <input
-                  required
-                  type="text"
-                  name="panelcolor"
-                  placeholder="Panel Color"
-                  class="w-full border rounded px-4 py-2 bg-gray-100"
+                  class="w-60 border rounded px-4 py-2 bg-gray-100"
                 />
                 <input
                   required
                   type="text"
                   name="textcolor"
                   placeholder="Text Color"
-                  class="w-full border rounded px-4 py-2 bg-gray-100 col-span-2"
+                  class="w-60 border rounded px-4 py-2 bg-gray-100 col-span-2"
                 />
+                <textarea
+                  required
+                  type="text"
+                  name="details"
+                  placeholder="product Details"
+                  class="w-[33rem] h-40 border rounded px-4 py-2 bg-gray-100 resize-none"
+                ></textarea>
               </div>
             </div>
 

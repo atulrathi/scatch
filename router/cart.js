@@ -1,22 +1,19 @@
-//reqires dependencies
 const express = require("express");
-const router = express.Router();
-const { islogin, logout } = require("../middlewair/islogin");
+const { islogin } = require("../middlewair/islogin");
 const productmodel = require("../models/productmodel");
 const usermodel = require("../models/usermodel");
+const router = express.Router();
 
 router.get("/", islogin, async (req, res) => {
-  let product = await productmodel.find();
-  let user = await usermodel.findOne({ _id: req.user._id });
-  res.render("user", { product, user });
+  let user = await usermodel.findOne({ _id: req.user._id }).populate("cart");
+  res.render("cart", { user });
 });
-
-router.get("/logout", logout);
 
 router.get("/product/:id", islogin, async (req, res) => {
   try {
     let product = await productmodel.findOne({ _id: req.params.id });
     let user = await usermodel.findOne({ _id: req.user._id });
+
     // check if product already exists in cart
     let index = user.cart.indexOf(product._id);
 
@@ -29,7 +26,7 @@ router.get("/product/:id", islogin, async (req, res) => {
     }
 
     await user.save();
-    res.redirect("/user");
+    res.redirect("/cart");
   } catch (err) {
     res.send(err.message);
   }

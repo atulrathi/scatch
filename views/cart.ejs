@@ -12,8 +12,8 @@
       class="flex justify-between items-center px-10 py-4 border-b border-gray-300"
     >
       <h2 class="text-2xl font-bold">Scatch.</h2>
-      <nav class="space-x-6 mr-[10rem]">
-        <a href="/cart" class="no-underline">Cart</a>
+      <nav class="mr-[10rem] space-x-6">
+        <a href="/user" class="no-underline text-lg mr-4">Products</a>
         <a class="text-red-500" href="/user/logout">Logout</a>
       </nav>
     </header>
@@ -47,25 +47,32 @@
       <!-- Products area -->
       <main class="ml-[4rem] flex">
         <!-- Product grid -->
-        <div class="grid grid-cols-5 gap-3">
+        <div class="  grid grid-cols-2 gap-3 min-h-[10rem] overflow-hindden">
           <!-- Product card -->
-          <% product.forEach((product)=>{ %>
-          <div class="relative  p-4 h-80 overflow-hidden w-[17rem] bg-[<%= product.backgroundcolor%>]">
-            <div class="  w-full h-60 bg-white rounded-lg mb-4 ">
+           <% if(user.cart.length>0){ %>
+            <% user.cart.forEach((product)=>{ %>
+<div class="relative bg-[<%= product.backgroundcolor%>] p-4 overflow-hidden flex max-h-[15rem] min-w-[40rem] ">
+            <div class="  w-[10rem] min-h-[10rem] bg-[<%= product.backgroundcolor%>] rounded-lg mb-4 ">
               <img
                 src="data:<%=product.image.contentType%>;base64,<%= product.image.data.toString('base64')%>"
-                class="rounded-md w-full h-full object-cover"
+                class="rounded-md h-full w-full object-cover"
                 alt=""
               />
             </div>
-            <div class="font-bold text-sm"><%= product.name %></div>
-            <div class="text-xs text-[<%=product.textcolor%>]"><p>&#8377 <%= product.price %></p></div>
-            <a href="/user/product/<%=product._id%>"  class="absolute bottom-3 right-3 border  bg-white rounded-full px-2 text-sm">
-             <%= user.cart.indexOf(product._id) == -1 ? "+" : "-" %>
-
-            </a>  
+            <div class="ml-6 min-h-[10rem ] overflow-hidden min-w-[5rem]">
+            <div class="font-bold text-5xl"><%= product.name %></div>
+            <div class="text-3xl text-[<%=product.textcolor%>] "><p>&#8377 <%= product.price %></p></div>
+            <div class="text-sm w-[18rem] h-[10rem] overflow-auto scrollbar-hide mt-5 "><p><%= product.details%></p></div>
+            </div>
+            <a href="/cart/product/<%=product._id%>"  class="absolute bottom-3 right-3 border  bg-white rounded-full px-2 text-sm">remove</a>
           </div>
           <% }) %>
+          <% }else{ %>
+            <h1 class="text-4xl mt-[100%] ml-[170%] w-full">Your cart is empty</h1>
+         <% } %>
+           
+          
+          
         </div>
       </main>
     </div>

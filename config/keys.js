@@ -1,3 +1,3 @@
 {
-  JWT_key:process.env.JWT_KEY;
+  JWT_key: process.env.JWT_KEY;
 }
